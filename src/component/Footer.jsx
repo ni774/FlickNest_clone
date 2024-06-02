@@ -39,7 +39,7 @@ const Footer = () => {
                 </a>
 
                 <a
-                    href="https://www.youtube.com/"
+                    href="https://www.linkedin.com/in/nikhil556/"
                     target="_blank"
                     className="item"
                 >
