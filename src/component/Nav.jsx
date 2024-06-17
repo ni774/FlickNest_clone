@@ -22,15 +22,20 @@ function Nav() {
   }, []);
 
   return (
-    <div className={`nav ${show && "nav_black"}`}>
+    <div className={`nav ${show && "nav_white"}`}>
       <img
         className="nav_logo"
         src="FlickNest.png"
         alt="Netflix Logo"
       />
+
+  
+        <span>Click any video and watch the Trailer</span>
+
+      {/***navigation 3 line  on right side */ }
       <img
         className="nav_avatar"
-        src="https://img.icons8.com/?size=100&id=3096&format=png&color=#0000"  // to change color change in lat
+        src="https://img.icons8.com/?size=100&id=3096&format=png&color=#0000"  
         alt="Netflix Logo"
         onClick={()=>{
           window.scrollTo({

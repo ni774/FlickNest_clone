@@ -33,3 +33,11 @@
   .row_posterLarge:hover {
     transform: scale(1.11);
   }
+
+  .trailerShow button {
+    background-color: #fff;
+    color: red;
+    position: relative;
+    top: 0rem;
+    left: 35rem;
+  }

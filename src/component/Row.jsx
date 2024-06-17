@@ -9,6 +9,7 @@ const base_url = "https://image.tmdb.org/t/p/original"
 function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
+  const [showTrailer, setShowTrailer] = useState(false);
 
   useEffect(() => {
 
@@ -29,7 +30,10 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
   }
 
+  // console.log(movies);
+
   const handleClick = (movie) => {
+    setShowTrailer(!showTrailer);
     // console.table(movie?.title)
     if (trailerUrl) {
       setTrailerUrl('')
@@ -42,6 +46,11 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
   }
 
+  const closeTrailer = () => {
+    setTrailerUrl('');
+    setShowTrailer(false);
+  };
+
   return (
     <div className="row">
       <h2 style={{backgroundColor: "black"}}>{title}</h2>
@@ -52,12 +61,18 @@ function Row({ title, fetchUrl, isLargeRow }) {
             onClick={() => handleClick(movie)}
             className={`row_poster ${isLargeRow && "row_posterLarge"}`}
             src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
-            alt={movie.name} />
+            alt={movie.name} 
+            />
         })}
       </div>
-      <div style={{ padding: "40px" }}>
-        {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
-      </div>
+      {
+        showTrailer &&
+        <div className="trailerShow"    style={{ padding: "40px" }}>
+          <button onClick={closeTrailer}>X</button>
+          {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+        </div>
+      }
+      
     </div>
   );
 }

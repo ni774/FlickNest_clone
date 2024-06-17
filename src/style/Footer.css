@@ -23,9 +23,9 @@ a {
     color: rgb(190, 190, 190);
     margin: 1px;
     font-size: 15px;
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
 }
 
 .item {

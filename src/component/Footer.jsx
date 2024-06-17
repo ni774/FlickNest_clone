@@ -10,9 +10,9 @@ import {
 const Footer = () => {
     return (
         <footer className="footer">
-                <div className="item2">
-                    This is clone project made for learning purpose for any issue contact contact: gnikhil556@gmail.com
-                </div>
+            <div className="item2">
+                This is clone project made for learning purpose for any issue contact contact: gnikhil556@gmail.com
+            </div>
             <div className="footer-container">
 
                 <div className="item2">

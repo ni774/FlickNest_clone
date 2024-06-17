@@ -8,8 +8,6 @@ import './App.css'
 import Footer from './component/Footer.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <Nav />
