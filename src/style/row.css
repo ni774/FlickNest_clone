@@ -39,5 +39,25 @@
     color: red;
     position: relative;
     top: 0rem;
-    left: 35rem;
+    left: 35em;
   }
+
+  @media (max-width: 1200px) {
+    .trailerShow button {
+     left: 14em; /* Adjust position for smaller screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .trailerShow button {
+      left : 10em; /* Further adjust for tablets */
+      
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .trailerShow button {
+      left: 5em; /* Adjust for mobile devices */
+    }
+  }
+  

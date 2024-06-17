@@ -14,6 +14,10 @@
   }
   .nav span{
     font-family:'Courier New', Courier, monospace;
+    display: block;
+    width: 90%;
+    text-align: center;
+    font-size: 1.7vw;
   }
   
   .nav_white {
@@ -33,4 +37,10 @@
     right: 20px;
     width: 30px;
     object-fit: contain;
+  }
+
+  @media (max-width: 480px) {
+    .nav span{
+      font-size: 3.7vw;
+    }
   }
