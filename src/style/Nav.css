@@ -17,6 +17,7 @@
     display: block;
     width: 90%;
     text-align: center;
+    text-shadow: 2px 1px rgba(0, 0, 0, 0.3);;
     font-size: 1.7vw;
   }
   
@@ -36,6 +37,7 @@
     position: fixed;
     right: 20px;
     width: 30px;
+    top: 10px ;
     object-fit: contain;
   }
 

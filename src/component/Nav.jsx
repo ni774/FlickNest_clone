@@ -30,7 +30,7 @@ function Nav() {
       />
 
   
-        <span>Click any video and Enjoy The FlickNest</span>
+      {show && <span>Click any video and Enjoy The FlickNest</span>}
 
       {/***navigation 3 line  on right side */ }
       <img

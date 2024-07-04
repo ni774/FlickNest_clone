@@ -1,0 +1,145 @@
+.playlist {
+    background-color: white;
+    color: #fff;
+    width: 25%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+
+  .deletePlaylitButton{
+    position: relative;
+    bottom: 31px;
+    right: 6.2rem;
+    width: 5px; 
+    height: 5px;
+    font-size: 4em;
+    cursor: pointer;
+  }
+  
+  .playlist_row_posters {
+    padding: 20px;
+    height: 80vh;
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  .playlist_row_posters::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .playlist_row_posters::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .playlist_row_posters::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  .playlist_row_posters::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .playlist_row_posters::-webkit-scrollbar-thumb:active {
+    background: #333;
+  }
+  
+  .playlist_row_posters::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  
+  .playlist_row_posters::-webkit-scrollbar-button {
+    background: transparent;
+  }
+  
+  .row_card {
+    padding: 20px;
+    margin-bottom: 5px;
+    /* border-radius: 5px; */
+    object-fit: contain;
+    width: 100%;
+    max-height: 100px;
+    /* margin-right: 10px; */
+    transition: transform 450ms;
+  
+  }
+  
+  .row_card:hover {
+    transform: scale(1.1);
+  }
+  
+  .row_posterLarge {
+    max-height: 250px;
+  }
+  
+  .row_posterLarge:hover {
+    transform: scale(1.11);
+  }
+  
+  .trailerShow button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .trailerShow {
+    padding: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9); /* darken background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* high z-index to overlay other content */
+  }
+  
+  .trailerShow iframe {
+    width: 55em;
+    height: 30em;
+  }
+  
+  .add_playlist {
+    display: none;
+    background-color: #e81717;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+  }
+  
+  @media (max-width: 1200px) {
+    .trailerShow button {
+      left: 14em; /* position for smaller screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .trailerShow button {
+      left: 20em; /*  for tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .trailerShow button {
+      left: 12em; /* for mobile devices */
+    }
+    .trailerShow iframe {
+      width: 23em;
+      height: 18em;
+    }
+    .playlist{
+      width: 35%;
+    }
+    .deletePlaylitButton{
+      right: 2.5rem;
+    }
+  }
+  

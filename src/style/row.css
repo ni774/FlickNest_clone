@@ -7,19 +7,22 @@
     display: flex;
     overflow-y: hidden;
     overflow-x: scroll;
-    padding: 20px;
+    justify-content: space-around;
+    gap: 1px;
   }
   
   .row_posters::-webkit-scrollbar {
     display: none;
   }
-  
+
+
+
   .row_poster {
     object-fit: contain;
     width: 100%;
     max-height: 100px;
     margin-right: 10px;
-    transition: transform 450ms;
+   
   }
   
   .row_poster:hover {
@@ -27,37 +30,184 @@
   }
   
   .row_posterLarge {
-    max-height: 250px;
+    max-height: 350px;
   }
   
   .row_posterLarge:hover {
     transform: scale(1.11);
   }
 
+
   .trailerShow button {
-    background-color: #fff;
-    color: red;
-    position: relative;
-    top: 0rem;
-    left: 35em;
+    position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
   }
+
+  .trailerShow {
+    padding: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9); /* darken background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* high z-index to overlay other content */
+  }
+  .trailerShow iframe {
+    width: 55em;
+    height: 30em;
+    /* width: 80%;
+    height: 80%; */
+  }
+  .add_playlist{
+    display: none;
+    background-color: #e81717;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+  }
+  .add_toPlaylist{
+    display: flex;
+    align-items: center;
+     /* background-color: white; */
+    /* border: 1px solid white; */
+     /* border-radius: 50%; */
+    /* padding-bottom: 11px; */
+    /* visibility: hidden; */
+    height: 24px; 
+    width: 20px;
+    z-index: 10;
+    position: relative;
+    top: -5px;
+    bottom: 10px;
+    right: 34px;
+    font-size: 1em;
+    /* background-color: rgb(255,255,255,1); */
+    color: rgb(red, green, blue,alpha);
+    cursor: pointer;
+    /* padding-bottom: 15px; */
+    /* vertical-align: middle;   */
+    /* transition: font-size 1s;   */
+  }
+
+  /* .changeColor{
+    background-color: blue;
+  } */
+
+  /* .add_toPlaylist:hover{
+    border: 1px solid white;
+  } */
+
+.row_poster {
+  display: block;
+}
+/* .row_poster::after{
+  content: "add";
+  display: inline;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+} */
+
+/* .add-button{
+  display: none;
+} */
+
+.row_posterLarge {
+  max-height: 250px;
+  object-fit: contain;
+  margin-right: 10px;
+  transition: transform 450ms;
+}
+
+.row_posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.row_posters::-webkit-scrollbar {
+  display: none;
+}
+
+.trailerShow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.trailerShow button{
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.addToPlaylist{
+  position: absolute;
+  top: 10px;
+  right: 6rem;
+  /* background-color: rgba(59, 199, 24, 0.7); */
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 2.7rem;
+}
+.addToPlaylist:visited{
+  background-color: royalblue;
+}
 
   @media (max-width: 1200px) {
     .trailerShow button {
-     left: 14em; /* Adjust position for smaller screens */
+     left: 0em; /* Adjust position for smaller screens */
     }
   }
   
   @media (max-width: 768px) {
-    .trailerShow button {
-      left : 10em; /* Further adjust for tablets */
-      
+    /* Further adjust for tablets */
+    
+    .addToPlaylist{
+      right: 3em;
     }
+
   }
   
   @media (max-width: 480px) {
     .trailerShow button {
-      left: 5em; /* Adjust for mobile devices */
+      left: 11em; /* Adjust for mobile devices */
+    }
+  
+    .trailerShow iframe {
+      width: 23em;
+      height: 18em;
+      /* width: 80%;
+      height: 80%; */
     }
   }
   

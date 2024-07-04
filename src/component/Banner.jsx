@@ -4,11 +4,16 @@ import requests from '../requests.js';
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer';
 import "../style/Banner.css";
+import Playlist from './Playlist.jsx';
 
-function Banner() {
+function Banner({myplaylist, setMyplaylist}) {
   const [movie, setMovie] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [showTrailer, setShowTrailer] = useState(false);
+
+  const [showPlaylist, setShowPlaylist] = useState(false);
+  console.log("got playlist in banner",myplaylist);
+ 
 
   useEffect(() => {
     async function fetchData() {
@@ -79,7 +84,7 @@ function Banner() {
 
           <div className="banner_buttons">
             <button className="banner_button" onClick={() => handleClick(movie)}>Play</button>
-            <button className="banner_button">My List</button>
+            <button className="banner_button" onClick={()=>setShowPlaylist(prev => !prev)} >My List</button>
             <button className="banner_button" onClick={()=>{window.location.reload(true)}}>Refresh</button>
           </div>
           <h1 className="banner_description">{truncate(movie?.overview, 150)}</h1>
@@ -93,6 +98,16 @@ function Banner() {
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
         </div>
       )}
+
+      { /**************myplaylist******** */ }
+
+      {showPlaylist && 
+      <Playlist 
+        showPlaylist={showPlaylist} 
+        setShowPlaylist={setShowPlaylist}
+        myplaylist={myplaylist}
+        setMyplaylist={setMyplaylist}
+      />}
     </>
   );
 }
