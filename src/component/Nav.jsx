@@ -4,6 +4,7 @@ import "../style/Nav.css";
 function Nav() {
   const [show, handleshow] = useState(false)
 
+
   const handleScroll = () => {
     if (window.scrollY > 100) {
       handleshow(true);
@@ -28,9 +29,8 @@ function Nav() {
         src="FlickNest.png"
         alt="Netflix Logo"
       />
-
   
-      {show && <span>Click any video and Enjoy The FlickNest</span>}
+      {show && <span>Just Play and Enjoy The FlickNest</span>}
 
       {/***navigation 3 line  on right side */ }
       <img

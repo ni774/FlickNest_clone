@@ -2,33 +2,29 @@ import React, { useState, useEffect } from 'react';
 import axios from '../axios.js';
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer';
+
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { action } from '../redux/index';
+
 import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import "../style/row.css";
 
 const base_url = "https://image.tmdb.org/t/p/original"
 
-function Row({ title, fetchUrl,myplaylist, setMyplaylist, isLargeRow }) {
+function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [showTrailer, setShowTrailer] = useState(false);
-  // const [currentMovieId, setCurrentMovieId] = useState(0);
-  // const [hovered, setHovered] = useState(null);
   const [bgcolor, setBgcolor] = useState(false)
   const [loadedImages, setLoadedImages] = useState({});
 
-  const handleImageLoad = (id) => {
-    setLoadedImages((prevState) => ({
-      ...prevState,
-      [id]: true,
-    }));
-  };
-
-
-  // console.log("myplaylist is", typeof myplaylist);
-  // Array.isArray(myplaylist) ? console.log("yaha bhi arrray") : console.log("yaha nahi array, not")
+  /*-----------redux------------*/
+  const myplaylist = useSelector(state => state.myPlaylist);
+  const dispatch = useDispatch();
+  /*-----------end------------*/
 
 
   useEffect(() => {
@@ -42,6 +38,14 @@ function Row({ title, fetchUrl,myplaylist, setMyplaylist, isLargeRow }) {
   }, [fetchUrl]);
 
 
+  const handleImageLoad = (id) => {
+    setLoadedImages((prevState) => ({
+      ...prevState,
+      [id]: true,
+    }));
+    // console.log("Image loaded",loadedImages);
+  };
+
 
   const opts = {
     height: "100%",
@@ -51,11 +55,9 @@ function Row({ title, fetchUrl,myplaylist, setMyplaylist, isLargeRow }) {
     }
   }
 
-  // console.log("movies is-->",movies);
 
   const handleClick = (movie) => {
     setShowTrailer(!showTrailer);
-    // console.table(movie?.title)
     if (trailerUrl) {
       setTrailerUrl('')
     } else {
@@ -74,7 +76,6 @@ function Row({ title, fetchUrl,myplaylist, setMyplaylist, isLargeRow }) {
   }
 
 
-
   const closeTrailer = () => {
     setTrailerUrl('');
     setShowTrailer(false);
@@ -85,32 +86,21 @@ function Row({ title, fetchUrl,myplaylist, setMyplaylist, isLargeRow }) {
   };
 
 
-  //  add current movie to myplaylist
+  /*----------------add current video to the Playlist----------------*/
   const handleMyplaylist = (id) => {
     console.log("clicked")
     const movie = movies.find(movie => movie.id === id);
+    //?*if movie is already in myplaylist
     if(myplaylist.some(movie => movie.id === id))
       return;
+    //* else add it to myplaylist
     if(movie){
-      setMyplaylist(oldValue => [...oldValue, movie]);
+      dispatch(action.addToPlaylist(movie));
     }
-    console.log("fav",myplaylist)
-    localStorage.setItem("myplaylist",JSON.stringify(myplaylist));
     console.log("Added to My Playlist");
     setBgcolor(true);
   };
-
-  // const handleMouseEnter = (movieId) => {
-  //   setHovered(movieId);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   setTimeout(()=>{
-  //     setHovered(false);
-  //   },4000)
-  // };
- 
-
+  /*-------------------------end--------------------------------*/
 
   
   return (
@@ -125,8 +115,6 @@ function Row({ title, fetchUrl,myplaylist, setMyplaylist, isLargeRow }) {
                 key={movie.id}
                 onClick={() => handleClick(movie)}
                 className={`row_poster ${isLargeRow && "row_posterLarge"}`}
-                // onMouseEnter={() => handleMouseEnter(movie.id)}
-                // onMouseLeave={handleMouseLeave}
                 src={`${base_url}${
                   isLargeRow ? movie.poster_path : movie.backdrop_path
                 }`}
@@ -136,6 +124,7 @@ function Row({ title, fetchUrl,myplaylist, setMyplaylist, isLargeRow }) {
               />
               {loadedImages && (
                 <span
+                  title='add in Favorite playlist'
                   onClick={() => handleMyplaylist(movie.id)}
                   className={`add_toPlaylist ${bgcolor && "changeColor"}`}
                 >
@@ -151,7 +140,6 @@ function Row({ title, fetchUrl,myplaylist, setMyplaylist, isLargeRow }) {
         <div className="trailerShow">
           <button className='cancelView' onClick={closeTrailer}>X</button>
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
-          {/* <button className='addToPlaylist' onClick={()=>handleMyplaylist(currentMovieId)}>+</button> */}
         </div>
       }
     </div>

@@ -7,12 +7,21 @@ import "../style/playlist.css";
 import { ToastContainer, toast } from 'react-toastify';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { action } from '../redux/index';
+
 const base_url = "https://image.tmdb.org/t/p/original";
 
-function Playlist({ showPlaylist, setShowPlaylist, myplaylist, setMyplaylist }) {
+function Playlist({ showPlaylist, setShowPlaylist}) {
   const [trailerUrl, setTrailerUrl] = useState("");
   const [showTrailer, setShowTrailer] = useState(false);
-  console.log("playlist loaded", myplaylist);
+  
+  //redux
+  const myplaylist = useSelector(state => state.myPlaylist)
+  // console.log("playlist loaded", myplaylist);
+  const dispatch = useDispatch();
 
   const opts = {
     height: "100%",
@@ -46,11 +55,8 @@ function Playlist({ showPlaylist, setShowPlaylist, myplaylist, setMyplaylist }) 
     setShowPlaylist(false);
   };
 
-  const deleteMyPlaylist = (movie) => {
-    const newMyplaylist = myplaylist.filter(m => m.id !== movie.id);
-    setMyplaylist(newMyplaylist);
-    localStorage.setItem("myplaylist", JSON.stringify(newMyplaylist));
-    // toast("Deleted from My Playlist");
+  const deleteMyPlaylist = (movieId) => {
+    dispatch(action.removeToPlaylist(movieId));
     if (showTrailer) {
       closeTrailer();
     }
@@ -62,7 +68,6 @@ function Playlist({ showPlaylist, setShowPlaylist, myplaylist, setMyplaylist }) 
 
   return (
     <div className="playlist">
-      <ToastContainer />
       <button onClick={closePlaylist}>X</button>
       <h2 style={{ color: "black" }}>My Playlist</h2>
       <div className="playlist_row_posters">
@@ -76,7 +81,7 @@ function Playlist({ showPlaylist, setShowPlaylist, myplaylist, setMyplaylist }) 
                 alt={movie.name}
                 onError={handleImageError}
               />
-              <span className="deletePlaylitButton" onClick={() => deleteMyPlaylist(movie)}><RemoveCircleOutlineIcon color="error" /></span>
+              <span className="deletePlaylitButton" onClick={() => deleteMyPlaylist(movie.id)}><RemoveCircleOutlineIcon color="error" /></span>
             </div>
           ))
         ) : (

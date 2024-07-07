@@ -6,14 +6,12 @@ import movieTrailer from 'movie-trailer';
 import "../style/Banner.css";
 import Playlist from './Playlist.jsx';
 
-function Banner({myplaylist, setMyplaylist}) {
+function Banner() {
   const [movie, setMovie] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [showTrailer, setShowTrailer] = useState(false);
-
   const [showPlaylist, setShowPlaylist] = useState(false);
-  console.log("got playlist in banner",myplaylist);
- 
+
 
   useEffect(() => {
     async function fetchData() {
@@ -99,15 +97,15 @@ function Banner({myplaylist, setMyplaylist}) {
         </div>
       )}
 
-      { /**************myplaylist******** */ }
+      { /*---------------myplaylist--------------*/ }
 
       {showPlaylist && 
-      <Playlist 
-        showPlaylist={showPlaylist} 
-        setShowPlaylist={setShowPlaylist}
-        myplaylist={myplaylist}
-        setMyplaylist={setMyplaylist}
-      />}
+        <Playlist 
+          showPlaylist={showPlaylist} 
+          setShowPlaylist={setShowPlaylist}
+        />
+      }
+
     </>
   );
 }

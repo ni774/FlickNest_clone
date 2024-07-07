@@ -1,5 +1,5 @@
 const API_KEY = process.env.API_KEY
-console.log("hii",API_KEY);
+// console.log("hii",API_KEY);
 const requests = {
 	fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,
 	fetchNetflixOriginals: `/discover/tv?api_key=${API_KEY}&with_network=123`,

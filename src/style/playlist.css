@@ -1,6 +1,6 @@
 .playlist {
     background-color: white;
-    color: #fff;
+    /* color: #fff; */
     width: 25%;
     position: fixed;
     top: 0;
@@ -12,7 +12,7 @@
   .deletePlaylitButton{
     position: relative;
     bottom: 31px;
-    right: 6.2rem;
+    right: 4.3rem;
     width: 5px; 
     height: 5px;
     font-size: 4em;
@@ -34,7 +34,8 @@
   }
   
   .playlist_row_posters::-webkit-scrollbar-thumb {
-    background: #888;
+    background: linear-gradient(red,black);
+    border-radius: 5px;
   }
   
   .playlist_row_posters::-webkit-scrollbar-thumb:hover {
@@ -117,7 +118,10 @@
   
   @media (max-width: 1200px) {
     .trailerShow button {
-      left: 14em; /* position for smaller screens */
+      left: 14em; /* position for smaller screens or mac */
+    }
+    .deletePlaylitButton{
+      right: 2.5rem;
     }
   }
   
