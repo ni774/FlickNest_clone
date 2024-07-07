@@ -30,7 +30,7 @@ function Nav() {
         alt="Netflix Logo"
       />
   
-      {show && <span>Just Play and Enjoy The FlickNest</span>}
+      {show && <span>The Movie Trailer</span>}
 
       {/***navigation 3 line  on right side */ }
       <img

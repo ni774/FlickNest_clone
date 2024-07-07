@@ -65,12 +65,12 @@ function Row({ title, fetchUrl, isLargeRow }) {
         .then(url => {
           // console.log("trailer url: " + url);
           const urlParams = new URLSearchParams(new URL(url).search);
-          console.log("trailer urlobject: " + urlParams);
+          // console.log("trailer urlobject: " + urlParams);
           setTrailerUrl(urlParams.get('v'));
-          console.log("now trailer Url is-",trailerUrl)
+          // console.log("now trailer Url is-",trailerUrl)
         }).catch((error) => {
-          console.log("not found",error);
-          toast("currently unavaulable, try next video");
+          // console.log("not found",error);
+          toast("currently unavailable, try next video");
         });
     }
   }

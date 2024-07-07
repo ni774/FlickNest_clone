@@ -1,8 +1,45 @@
-# React + Vite
+# Flick-Nest (The Movie Trailer)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+Deployed: (https://flick-nest.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Flick-Nest (The Movie Trailer) is a Web based application with the collection of Movies Trailers and UI inspired by NetFlix and data taken from [The Movie] (https://www.themoviedb.org/)
+
+Movies List:
+
+- Trending Movies
+- Original Movies
+- top-Rated Movies
+- Action Movies
+- Comedy Movies
+- Horror Movies
+- Romance Movies
+- Documentaries
+
+#### snapShot:
+
+![Banner](image.png)
+
+![categories](image-1.png)
+
+![alt text](image-2.png)
+
+![play](image-3.png)
+
+![error](image-4.png)
+
+![playlist video](image-5.png)
+
+#### Features
+
+- Favourite Playlist Management
+- Play Latest and Trending Movies Trailer
+- Trending Movie as a Banner
+
+#### Tech-Stack
+ - React (javascript)
+ - React-Redux 
+ - Axios
+
+
